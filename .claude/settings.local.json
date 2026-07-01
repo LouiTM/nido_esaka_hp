@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la ~/.claude/projects/ 2>&1 | head -50)",
+      "Read(//c/Users/itf/.claude/projects/**)",
+      "Bash(ls -la \"/c/Users/itf/.claude/projects/c--Users-itf-workspace-nido-esaka/\" 2>&1)",
+      "Read(//c/Users/itf/.claude/projects/c--Users-itf-workspace-nido-esaka//**)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}
