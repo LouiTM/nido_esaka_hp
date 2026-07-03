@@ -10,7 +10,7 @@ interface ApertureMarkProps extends BoxProps {
  * カメラの絞り羽根と、鳥の巣の"編み"を重ねた六枚羽根のリング。
  * 見出し脇の小さな印や、写真フレームのアクセントとして繰り返し使用する。
  */
-export function ApertureMark({ color = 'terracotta.500', spin = false, ...rest }: ApertureMarkProps) {
+export function ApertureMark({ color = 'mustard.600', spin = false, ...rest }: ApertureMarkProps) {
   const blades = Array.from({ length: 6 });
   return (
     <Box

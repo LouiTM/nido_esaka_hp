@@ -8,8 +8,10 @@ import { Flow } from './components/Flow';
 import { InstagramCTA } from './components/InstagramCTA';
 import { AccessInfo } from './components/AccessInfo';
 import { Footer } from './components/Footer';
+import { useParallax } from './hooks/useParallax';
 
 function App() {
+  useParallax();
   return (
     <Box minH="100vh">
       <Navbar />
@@ -19,8 +21,8 @@ function App() {
         <Gallery />
         <Menu />
         <Flow />
-        <InstagramCTA />
         <AccessInfo />
+        <InstagramCTA />
       </main>
       <Footer />
     </Box>

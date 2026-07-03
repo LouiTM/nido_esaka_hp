@@ -1,21 +1,11 @@
-import { Box, SimpleGrid, Image, VStack, Text, Button, Heading, Flex, HStack } from '@chakra-ui/react';
-import { FiInstagram, FiExternalLink } from 'react-icons/fi';
-import { SiLine } from 'react-icons/si';
+import { Box, VStack, Text, Button, Heading } from '@chakra-ui/react';
+import { FiInstagram } from 'react-icons/fi';
 import { useLanguage } from '../i18n/LanguageContext';
 import { strings } from '../i18n/strings';
-import { placeholderImage, realPhoto, studioInfo } from '../data/site';
-import { IconBadge } from './IconBadge';
-import { CloudMark } from './CloudMark';
+import { studioInfo } from '../data/site';
+import { FlowerMark } from './FlowerMark';
+import { WaveDivider } from './WaveDivider';
 import { MotionBox, useReducedMotionSafe } from './motion';
-
-const igImages = [
-  realPhoto,
-  placeholderImage('nido-ig-2', 400, 400),
-  placeholderImage('nido-ig-3', 400, 400),
-  placeholderImage('nido-ig-4', 400, 400),
-  placeholderImage('nido-ig-5', 400, 400),
-  placeholderImage('nido-ig-6', 400, 400),
-];
 
 export function InstagramCTA() {
   const { lang } = useLanguage();
@@ -23,88 +13,52 @@ export function InstagramCTA() {
   const { fadeUpVariants } = useReducedMotionSafe();
 
   return (
-    <Box as="section" id="instagram" py={{ base: 16, md: 24 }}>
-      <Box maxW="7xl" mx="auto" px={{ base: 4, md: 8 }}>
-        <MotionBox initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeUpVariants}>
-        <Flex
-          direction={{ base: 'column', lg: 'row' }}
-          bg="terracotta.500"
-          borderRadius="32px"
-          overflow="hidden"
-          position="relative"
-          align="stretch"
-        >
-          <CloudMark
-            color="whiteAlpha.600"
-            drift
-            position="absolute"
-            top="8px"
-            left="8px"
-            boxSize="90px"
-            opacity={0.25}
-            pointerEvents="none"
-          />
-          <VStack
-            flex="1"
-            align="flex-start"
-            justify="center"
-            spacing={5}
-            p={{ base: 8, md: 12 }}
-            color="white"
-          >
-            <IconBadge icon={FiInstagram} bg="whiteAlpha.300" color="white" />
-            <Heading fontSize={{ base: '2xl', md: '3xl' }}>{t.contactTitle}</Heading>
-            <Text fontSize="sm" opacity={0.92} lineHeight="1.8">
-              {t.contactBody}
-            </Text>
-            <Text fontSize="sm" fontWeight="700" letterSpacing="0.05em">
-              {t.instaHandle}
-            </Text>
-            <HStack spacing={3} pt={2} flexWrap="wrap">
-              <Button
-                as="a"
-                href={studioInfo.lineUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                bg="#06C755"
-                color="white"
-                leftIcon={<SiLine />}
-                _hover={{ bg: '#05a648' }}
-              >
-                {t.lineFollow}
-              </Button>
-              <Button
-                as="a"
-                href={studioInfo.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                bg="white"
-                color="terracotta.600"
-                rightIcon={<FiExternalLink />}
-                _hover={{ bg: 'cream.100' }}
-              >
-                {t.instaFollow}
-              </Button>
-            </HStack>
-          </VStack>
+    <Box as="section" id="instagram" position="relative" overflow="hidden" py={{ base: 12, md: 14 }} bg="blush.100">
+      <FlowerMark
+        color="blush.200"
+        sway
+        filled
+        centerColor="white"
+        position="absolute"
+        top={{ base: '24px', md: '20%' }}
+        left={{ base: '-10px', md: '6%' }}
+        boxSize={{ base: '48px', md: '68px' }}
+        opacity={0.9}
+        pointerEvents="none"
+      />
 
-          <SimpleGrid flex="1" columns={3} spacing={0.5}>
-            {igImages.map((src, i) => (
-              <Box key={i} position="relative" aspectRatio={1} overflow="hidden" bg="terracotta.600">
-                <Image
-                  src={src}
-                  alt=""
-                  w="full"
-                  h="full"
-                  objectFit="cover"
-                  objectPosition={i === 0 ? 'center 25%' : 'center'}
-                />
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Flex>
+      <Box maxW="3xl" mx="auto" px={{ base: 4, md: 8 }} position="relative">
+        <MotionBox initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeUpVariants}>
+          <VStack spacing={4} textAlign="center" paddingBottom="8">
+            <Text fontSize="xs" letterSpacing="0.3em" fontWeight="700" color="blush.600" textTransform="uppercase">
+              INSTAGRAM
+            </Text>
+            <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} color="ink.900">
+              {t.igTitle}
+            </Heading>
+            <Text fontSize="sm" color="ink.600" lineHeight="2" maxW="480px">
+              {t.igBody}
+            </Text>
+            <Button
+              as="a"
+              href={studioInfo.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              px={8}
+              bg="blush.400"
+              color="white"
+              leftIcon={<FiInstagram />}
+              boxShadow="0 12px 24px -10px rgba(239,149,187,0.7)"
+              _hover={{ bg: 'blush.600', transform: 'translateY(-1px)' }}
+              transition="all 0.2s"
+            >
+              {t.igFollow}
+            </Button>
+          </VStack>
         </MotionBox>
       </Box>
+      <WaveDivider fill="cream.100" />
     </Box>
   );
 }

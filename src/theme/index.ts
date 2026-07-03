@@ -31,20 +31,23 @@ const colors = {
     900: '#1B2224', // メインテキスト
   },
   terracotta: {
-    // コーラルレッド（バルーン・蝶ネクタイ）— プライマリアクセント
+    // コーラルレッド（バルーン・蝶ネクタイ）— 差し色
     50: '#FDECE8',
     100: '#FBD2C9',
     300: '#F19582',
-    500: '#E85D45', // プライマリ
+    500: '#E85D45',
     600: '#D1462F',
     700: '#A83321',
   },
   mustard: {
-    // サニーイエロー（バルーン・フラッグ）— セカンダリアクセント
+    // サニーイエロー（バルーン・フラッグ）— プライマリアクセント
     50: '#FFF7E0',
     300: '#F9D876',
     500: '#F0B429',
     600: '#CE9312',
+    // 700は文字色専用の濃色（500/600は黄系で白文字・淡色背景とのコントラストが
+    // 不足するため、テキストやアイコンに使う濃いアンバー系を別途用意）。
+    700: '#8A5A00',
   },
   sage: {
     // スカイブルー（ブース背景）— 差し色
@@ -56,6 +59,7 @@ const colors = {
   blush: {
     // キッズピンク（Studio Alice参照）— 差し色
     50: '#FDEDF3',
+    100: '#FAD9E6', // Instagramセクションの背景ピンク
     200: '#F7C9DC',
     400: '#EF95BB',
     600: '#D66397',
@@ -63,14 +67,28 @@ const colors = {
 };
 
 const fonts = {
-  heading: `'Shippori Mincho', 'Noto Serif JP', serif`,
+  // 「もっと丸く・柔らかく」の要望により、明朝体から丸ゴシック（M PLUS Rounded 1c）に変更。
+  // 本文は既存のZen Kaku Gothic Newを維持。
+  heading: `'M PLUS Rounded 1c', 'Zen Kaku Gothic New', sans-serif`,
   body: `'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif`,
+};
+
+// 角丸を全体的に強める（「丸く」の要望）。Chakraのデフォルトより一段階ずつ大きい。
+// 2xl=カード、3xl=写真フレームの基準角丸としてコンポーネント側から参照する。
+const radii = {
+  sm: '10px',
+  md: '16px',
+  lg: '22px',
+  xl: '28px',
+  '2xl': '56px',
+  '3xl': '64px',
 };
 
 const theme = extendTheme({
   config,
   colors,
   fonts,
+  radii,
   styles: {
     global: {
       'html, body': {
@@ -79,7 +97,7 @@ const theme = extendTheme({
         scrollBehavior: 'smooth',
       },
       '::selection': {
-        backgroundColor: 'terracotta.300',
+        backgroundColor: 'mustard.300',
         color: 'ink.900',
       },
     },
@@ -87,13 +105,14 @@ const theme = extendTheme({
   components: {
     Heading: {
       baseStyle: {
-        fontWeight: '600',
+        // 丸ゴシックは太いほど可愛らしく見えるため、600→800に引き上げ。
+        fontWeight: '800',
         letterSpacing: '0.02em',
       },
     },
     Button: {
       baseStyle: {
-        fontWeight: '500',
+        fontWeight: '700',
         borderRadius: 'full',
       },
     },

@@ -43,17 +43,17 @@ export interface GalleryItem {
   caption: Bilingual;
 }
 
+// 写真が届くまでは、実際のInstagram投稿からお借りした1枚を全カード共通で使用する
+// （デザインカンプに合わせた措置。差し替え時は src を個別に変更してください）。
 export const galleryItems: GalleryItem[] = [
   { id: 'g1', category: 'kids', src: realPhoto, caption: { ja: 'カラフルなブースで1才のお誕生日撮影', en: 'First birthday shoot on a colorful backdrop' } },
-  { id: 'g2', category: 'family', src: placeholderImage('nido-family-1', 600, 750), caption: { ja: '兄妹のじゃれあい', en: 'Siblings at play' } },
-  { id: 'g3', category: 'pets', src: placeholderImage('nido-pets-1', 600, 750), caption: { ja: '愛犬との1枚', en: 'With the family dog' } },
-  { id: 'g4', category: 'model', src: placeholderImage('nido-model-1', 600, 750), caption: { ja: '海外風ブースでの撮影', en: 'Overseas-style booth shoot' } },
-  { id: 'g5', category: 'family', src: placeholderImage('nido-family-2', 600, 750), caption: { ja: '三世代の記念日', en: 'Three generations' } },
-  { id: 'g6', category: 'kids', src: placeholderImage('nido-kids-2', 600, 750), caption: { ja: '衣装を着替えて撮り放題', en: 'Unlimited outfit changes' } },
-  { id: 'g7', category: 'pets', src: placeholderImage('nido-pets-2', 600, 750), caption: { ja: '猫ちゃんもモデルデビュー', en: 'Cats make great models too' } },
-  { id: 'g8', category: 'model', src: placeholderImage('nido-model-2', 600, 750), caption: { ja: 'ポートフォリオ撮影', en: 'Portfolio session' } },
-  { id: 'g9', category: 'family', src: placeholderImage('nido-family-3', 600, 750), caption: { ja: 'パパと娘のひととき', en: 'A moment with dad' } },
-  { id: 'g10', category: 'kids', src: placeholderImage('nido-kids-3', 600, 750), caption: { ja: '大きな笑い声', en: 'A big laugh' } },
+  { id: 'g2', category: 'family', src: realPhoto, caption: { ja: '兄妹のじゃれあい', en: 'Siblings at play' } },
+  { id: 'g3', category: 'pets', src: realPhoto, caption: { ja: '愛犬との1枚', en: 'With the family dog' } },
+  { id: 'g4', category: 'model', src: realPhoto, caption: { ja: '海外風ブースでの撮影', en: 'Overseas-style booth shoot' } },
+  { id: 'g5', category: 'family', src: realPhoto, caption: { ja: '三世代の記念日', en: 'Three generations' } },
+  { id: 'g6', category: 'kids', src: realPhoto, caption: { ja: '衣装を着替えて撮り放題', en: 'Unlimited outfit changes' } },
+  { id: 'g7', category: 'pets', src: realPhoto, caption: { ja: '猫ちゃんもモデルデビュー', en: 'Cats make great models too' } },
+  { id: 'g8', category: 'model', src: realPhoto, caption: { ja: 'ポートフォリオ撮影', en: 'Portfolio session' } },
 ];
 
 // --- メニュー・料金 -----------------------------------------------------------

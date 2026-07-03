@@ -15,10 +15,10 @@ import {
   Link as ChakraLink,
 } from '@chakra-ui/react';
 import { HiOutlineMenu } from 'react-icons/hi';
-import { FiInstagram } from 'react-icons/fi';
 import { useLanguage } from '../i18n/LanguageContext';
 import { strings } from '../i18n/strings';
 import { studioInfo } from '../data/site';
+import { FlowerMark } from './FlowerMark';
 
 const NAV_ITEMS: { key: keyof typeof strings.ja; href: string }[] = [
   { key: 'navConcept', href: '#concept' },
@@ -39,9 +39,9 @@ export function Navbar() {
       position="sticky"
       top={0}
       zIndex={100}
-      bg="cream.100"
+      bg="cream.50"
       borderBottom="1px solid"
-      borderColor="cream.300"
+      borderColor="cream.200"
       backdropFilter="saturate(180%) blur(6px)"
     >
       <Flex
@@ -52,20 +52,22 @@ export function Navbar() {
         align="center"
         justify="space-between"
       >
-        <ChakraLink href="/" _hover={{ textDecoration: 'none' }}>
-          <Text fontFamily="heading" fontSize="2xl" fontWeight="700" color="ink.900">
+        <ChakraLink href="/" _hover={{ textDecoration: 'none' }} display="flex" alignItems="center" gap={2}>
+          <FlowerMark color="sage.500" filled centerColor="mustard.500" boxSize="28px" />
+          <Text fontFamily="heading" fontSize="2xl" fontWeight="800" color="ink.900">
             {t.brand}
           </Text>
         </ChakraLink>
 
-        <HStack spacing={6} display={{ base: 'none', lg: 'flex' }}>
+        <HStack spacing={7} display={{ base: 'none', lg: 'flex' }}>
           {NAV_ITEMS.map((item) => (
             <ChakraLink
               key={item.key}
               href={item.href}
               fontSize="sm"
+              fontWeight="600"
               color="ink.700"
-              _hover={{ color: 'terracotta.600' }}
+              _hover={{ color: 'mustard.700' }}
             >
               {t[item.key]}
             </ChakraLink>
@@ -74,27 +76,32 @@ export function Navbar() {
 
         <HStack spacing={3}>
           <Button
-            size="sm"
             variant="outline"
             borderColor="ink.900"
+            borderWidth="2px"
             color="ink.900"
             onClick={toggleLang}
             fontSize="xs"
-            letterSpacing="0.1em"
+            fontWeight="700"
+            borderRadius="full"
+            w="42px"
+            h="42px"
+            minW="42px"
+            p={0}
+            _hover={{ bg: 'cream.200' }}
             display={{ base: 'none', sm: 'inline-flex' }}
           >
             {t.langSwitch}
           </Button>
           <Button
             as="a"
-            href={studioInfo.instagramUrl}
+            href={studioInfo.lineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            size="sm"
-            bg="terracotta.500"
+            bg="#06C755"
             color="white"
-            leftIcon={<FiInstagram />}
-            _hover={{ bg: 'terracotta.600' }}
+            px={7}
+            _hover={{ bg: '#05a648' }}
             display={{ base: 'none', md: 'inline-flex' }}
           >
             {t.ctaReserveShort}
@@ -138,13 +145,12 @@ export function Navbar() {
               </Button>
               <Button
                 as="a"
-                href={studioInfo.instagramUrl}
+                href={studioInfo.lineUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                bg="terracotta.500"
+                bg="#06C755"
                 color="white"
-                leftIcon={<FiInstagram />}
-                _hover={{ bg: 'terracotta.600' }}
+                _hover={{ bg: '#05a648' }}
               >
                 {t.ctaReserve}
               </Button>
