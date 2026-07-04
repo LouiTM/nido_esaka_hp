@@ -24,7 +24,6 @@ const NAV_ITEMS: { key: keyof typeof strings.ja; href: string }[] = [
   { key: 'navConcept', href: '#concept' },
   { key: 'navGallery', href: '#gallery' },
   { key: 'navMenu', href: '#menu' },
-  { key: 'navVoice', href: '#flow' },
   { key: 'navAccess', href: '#access' },
 ];
 

@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Text, VStack, Button, Image, HStack } from '@chakra-ui/react';
-import { FiInstagram, FiChevronDown, FiMessageCircle } from 'react-icons/fi';
+import { FiInstagram, FiMessageCircle } from 'react-icons/fi';
 import { useLanguage } from '../i18n/LanguageContext';
 import { strings } from '../i18n/strings';
 import { realPhoto, studioInfo } from '../data/site';
@@ -143,22 +143,6 @@ export function Hero() {
           </Box>
           <Box
             position="absolute"
-            bottom={{ base: '-24px', md: '-32px' }}
-            left={{ base: '-16px', md: '-40px' }}
-            w={{ base: '110px', md: '160px' }}
-            aspectRatio={0.8}
-            borderRadius="3xl"
-            overflow="hidden"
-            border="6px solid"
-            borderColor="cream.50"
-            boxShadow="0 16px 34px -12px rgba(27, 34, 36, 0.3)"
-            transform="rotate(-9deg)"
-            bg="sage.500"
-          >
-            <Image src={realPhoto} alt="" w="full" h="full" objectFit="cover" objectPosition="center 30%" />
-          </Box>
-          <Box
-            position="absolute"
             top={{ base: '-8px', md: '-24px' }}
             right={{ base: '-8px', md: '-40px' }}
             w={{ base: '84px', md: '110px' }}
@@ -180,13 +164,6 @@ export function Hero() {
             {t.heroBadge}
           </Box>
         </Box>
-      </Flex>
-
-      <Flex justify="center" pb={8} display={{ base: 'none', md: 'flex' }}>
-        <VStack spacing={1} color="ink.400" fontSize="xs" letterSpacing="0.2em">
-          <Text>{t.heroScroll}</Text>
-          <FiChevronDown />
-        </VStack>
       </Flex>
     </Box>
   );

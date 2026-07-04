@@ -9,8 +9,7 @@
 // ---------------------------------------------------------------------------
 
 export const gradients = {
-  // 空・子供らしい爽やかさ（Gallery / Flow背景の下敷きとして残置。Flow本体は
-  // 「空感」を強めるためsage.50のベタ塗りに変更 — Flow.tsx参照）
+  // 空・子供らしい爽やかさ（Gallery背景の下敷き）
   sky: 'radial(circle at 20% 15%, sage.50, transparent 60%)',
   // 花畑のような柔らかさ（Hero / Concept）
   bloom: 'radial(circle at 85% 10%, blush.50, transparent 60%)',

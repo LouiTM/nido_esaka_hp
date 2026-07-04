@@ -24,37 +24,9 @@ export const realPhoto = '/images/nido-about.png';
 
 // --- ギャラリー -------------------------------------------------------------
 
-export interface GalleryCategory {
-  key: string;
-  label: Bilingual;
-}
-
-export const galleryCategories: GalleryCategory[] = [
-  { key: 'family', label: { ja: 'ファミリー', en: 'Family' } },
-  { key: 'kids', label: { ja: 'キッズ', en: 'Kids' } },
-  { key: 'pets', label: { ja: 'ペット', en: 'Pets' } },
-  { key: 'model', label: { ja: 'モデル撮影', en: 'Model' } },
-];
-
-export interface GalleryItem {
-  id: string;
-  category: string;
-  src: string;
-  caption: Bilingual;
-}
-
 // 写真が届くまでは、実際のInstagram投稿からお借りした1枚を全カード共通で使用する
-// （デザインカンプに合わせた措置。差し替え時は src を個別に変更してください）。
-export const galleryItems: GalleryItem[] = [
-  { id: 'g1', category: 'kids', src: realPhoto, caption: { ja: 'カラフルなブースで1才のお誕生日撮影', en: 'First birthday shoot on a colorful backdrop' } },
-  { id: 'g2', category: 'family', src: realPhoto, caption: { ja: '兄妹のじゃれあい', en: 'Siblings at play' } },
-  { id: 'g3', category: 'pets', src: realPhoto, caption: { ja: '愛犬との1枚', en: 'With the family dog' } },
-  { id: 'g4', category: 'model', src: realPhoto, caption: { ja: '海外風ブースでの撮影', en: 'Overseas-style booth shoot' } },
-  { id: 'g5', category: 'family', src: realPhoto, caption: { ja: '三世代の記念日', en: 'Three generations' } },
-  { id: 'g6', category: 'kids', src: realPhoto, caption: { ja: '衣装を着替えて撮り放題', en: 'Unlimited outfit changes' } },
-  { id: 'g7', category: 'pets', src: realPhoto, caption: { ja: '猫ちゃんもモデルデビュー', en: 'Cats make great models too' } },
-  { id: 'g8', category: 'model', src: realPhoto, caption: { ja: 'ポートフォリオ撮影', en: 'Portfolio session' } },
-];
+// （差し替え時は配列の各要素を個別の画像パスに変更してください）。
+export const galleryPhotos: string[] = Array.from({ length: 10 }, () => realPhoto);
 
 // --- メニュー・料金 -----------------------------------------------------------
 // 出典：ご提供いただいたメニュー表（KIDS & PETS Basic Plans / Family Simple）
@@ -124,8 +96,8 @@ export const menuOptions: MenuOption[] = [
 // --- コンセプト -------------------------------------------------------------
 
 export const conceptIntro: Bilingual = {
-  ja: '"nido"は、大阪・江坂のセルフフォトスタジオ＆モデル事務所。ご家族、お子様、ペットまで、飾らない"いつもの姿"を、5つのブースで自由に撮り放題で残せます。',
-  en: '"nido" is a self-photo studio & model agency in Esaka, Osaka. Families, kids, and pets \u2014 capture every side of your loved ones, just as they are, across 5 booths.',
+  ja: '"nido"は、大阪・江坂のフォトスタジオ。ご家族、ファミリー、お子様、ペットなど、いろんな形の家族の飾らないいつもの姿を5つのブースで自由に撮り放題で残せます。',
+  en: '"nido" is a photo studio in Esaka, Osaka. Families of every shape \u2014 parents, kids, and pets \u2014 freely capture your everyday, unposed moments across 5 booths, shooting as much as you like.',
 };
 
 export interface ConceptPoint {
@@ -161,49 +133,6 @@ export const conceptPoints: ConceptPoint[] = [
   },
 ];
 
-// --- ご利用の流れ -------------------------------------------------------------
-
-export interface FlowStep {
-  step: string;
-  title: Bilingual;
-  body: Bilingual;
-}
-
-export const flowSteps: FlowStep[] = [
-  {
-    step: '01',
-    title: { ja: '公式LINE・DMでご予約', en: 'Book via LINE or DM' },
-    body: {
-      ja: '公式LINEまたはInstagramのDMから、ご希望日時とプランをご連絡ください。',
-      en: 'Message us on official LINE or Instagram DM with your preferred date and plan.',
-    },
-  },
-  {
-    step: '02',
-    title: { ja: 'ご来店', en: 'Visit the studio' },
-    body: {
-      ja: '江坂駅・豊津/南吹田駅から徒歩圏内。スタッフがご案内します。',
-      en: 'A short walk from Esaka or Toyotsu/Minami-Suita stations. Our staff will show you around.',
-    },
-  },
-  {
-    step: '03',
-    title: { ja: '撮り放題', en: 'Shoot freely' },
-    body: {
-      ja: '5ブースを自由に移動しながら、時間内は撮影し放題。衣装や小物も使い放題です。',
-      en: 'Move between all 5 booths and shoot as much as you like, with unlimited costumes and props.',
-    },
-  },
-  {
-    step: '04',
-    title: { ja: 'お好みでオプション', en: 'Add options if you like' },
-    body: {
-      ja: 'オーナー撮影や一眼レフ、プロカメラマンの同行もオプションで追加できます。',
-      en: 'Add owner shooting, a DSLR rental, or a professional photographer as needed.',
-    },
-  },
-];
-
 // --- アクセス・基本情報 --------------------------------------------------------
 
 export const studioInfo = {
@@ -230,5 +159,8 @@ export const studioInfo = {
     ja: 'ご予約は公式LINEまたはInstagram DMから承っています。',
     en: 'Reservations are accepted via official LINE or Instagram DM.',
   } as Bilingual,
-  genreLabel: { ja: '家族・お子様・ペット・モデル撮影 ほか', en: 'Family, kids, pets, model shoots & more' } as Bilingual,
+  genreLabel: {
+    ja: '家族、お子様、ペット、マタニティ、夫婦、カップル、宣材写真、モデル撮影など',
+    en: 'Family, kids, pets, maternity, married couples, couples, portfolio shoots, model shoots & more',
+  } as Bilingual,
 };

@@ -10,7 +10,6 @@ const NAV_ITEMS: { key: keyof typeof strings.ja; href: string }[] = [
   { key: 'navConcept', href: '#concept' },
   { key: 'navGallery', href: '#gallery' },
   { key: 'navMenu', href: '#menu' },
-  { key: 'navVoice', href: '#flow' },
   { key: 'navAccess', href: '#access' },
 ];
 
@@ -79,19 +78,9 @@ export function Footer() {
 
       <Box maxW="7xl" mx="auto" px={{ base: 4, md: 8 }}>
         <Divider borderColor="cream.300" my={6} />
-        <Flex
-          direction={{ base: 'column', md: 'row' }}
-          justify="space-between"
-          align={{ base: 'flex-start', md: 'center' }}
-          gap={2}
-        >
-          <Text fontSize="xs" color="ink.400">
-            {t.footerNote}
-          </Text>
-          <Text fontSize="xs" color="ink.400" whiteSpace="nowrap">
-            © nido — {t.footerRights}
-          </Text>
-        </Flex>
+        <Text fontSize="xs" color="ink.400" textAlign={{ base: 'left', md: 'right' }}>
+          © nido — {t.footerRights}
+        </Text>
       </Box>
     </MotionBox>
   );
