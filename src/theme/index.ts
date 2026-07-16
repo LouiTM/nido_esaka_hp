@@ -64,6 +64,30 @@ const colors = {
     400: '#EF95BB',
     600: '#D66397',
   },
+  // -------------------------------------------------------------------------
+  // 「ポップ＆ビビッド」リデザイン用トークン（.temp/design_handoff_pop_vivid_top）
+  // 既存パステル4色をそのままビビッド化した4色＋淡色＋濃字色のセット。
+  // 全要素の縁取り・ハードシャドウには pop.black を使う。
+  // -------------------------------------------------------------------------
+  pop: {
+    black: '#1B2224', // インク縁取り・文字
+    offwhite: '#FFFDF6',
+    blue: '#2BA6E8',
+    blueLight: '#D9F1FF',
+    blueText: '#1B7FB8', // 淡色背景上のリンク・文字用
+    orange: '#FF5A3C',
+    orangeLight: '#FFE3DC',
+    orangeText: '#E03A1D',
+    yellow: '#FFC61A',
+    yellowLight: '#FFF3C4',
+    yellowText: '#8A5A00', // 黄系背景上の濃字
+    yellowTextSoft: '#B37E00',
+    pink: '#FF7BAC',
+    pinkLight: '#FFE0EC',
+    pinkText: '#E14E85',
+    line: '#06C755', // LINEブランドグリーン
+    border: '#F0E9D8', // ヘッダー・フッターの罫線
+  },
 };
 
 const fonts = {
@@ -71,6 +95,8 @@ const fonts = {
   // 本文は既存のZen Kaku Gothic Newを維持。
   heading: `'M PLUS Rounded 1c', 'Zen Kaku Gothic New', sans-serif`,
   body: `'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif`,
+  // ポップ＆ビビッド版の英字ラベル用（キッカーピル・EN ボタン・価格表記など）
+  accent: `'Baloo 2', 'M PLUS Rounded 1c', sans-serif`,
 };
 
 // 角丸を全体的に強める（「丸く」の要望）。Chakraのデフォルトより一段階ずつ大きい。
@@ -92,12 +118,12 @@ const theme = extendTheme({
   styles: {
     global: {
       'html, body': {
-        backgroundColor: 'cream.100',
+        backgroundColor: 'pop.offwhite',
         color: 'ink.900',
         scrollBehavior: 'smooth',
       },
       '::selection': {
-        backgroundColor: 'mustard.300',
+        backgroundColor: 'pop.yellow',
         color: 'ink.900',
       },
     },

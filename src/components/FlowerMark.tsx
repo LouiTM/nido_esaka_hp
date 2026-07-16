@@ -10,7 +10,15 @@ interface FlowerMarkProps extends BoxProps {
   filled?: boolean;
   /** filled=true の時の中心の丸の色。既定は白系（花芯を明るく見せる）。 */
   centerColor?: string;
+  /**
+   * ポップ＆ビビッド版ロゴ。花びらを4色（青・オレンジ・黄・ピンク）交互配色にし、
+   * 全パーツに黒3pxのインク縁取りを付ける。指定時は color / filled / centerColor は無視。
+   */
+  pop?: boolean;
 }
+
+// pop版の花びら配色（デザインリファレンスの並び：青→オレンジ→黄→ピンク→青）
+const POP_PETAL_COLORS = ['pop.blue', 'pop.orange', 'pop.yellow', 'pop.pink', 'pop.blue'];
 
 /**
  * Chakraのカラートークン（例: 'blush.400'）を、SVGのfill/stroke属性で使える
@@ -28,11 +36,41 @@ export function FlowerMark({
   sway = false,
   filled = false,
   centerColor = 'cream.50',
+  pop = false,
   ...rest
 }: FlowerMarkProps) {
   const petals = Array.from({ length: 5 });
   const petalColor = tokenToCssVar(color);
   const coreColor = tokenToCssVar(filled ? centerColor : color);
+
+  if (pop) {
+    return (
+      <Box as="svg" viewBox="0 0 100 100" fill="none" {...rest}>
+        {POP_PETAL_COLORS.map((c, i) => (
+          <ellipse
+            key={i}
+            cx="50"
+            cy="25"
+            rx="15"
+            ry="23"
+            fill={tokenToCssVar(c)}
+            stroke={tokenToCssVar('pop.black')}
+            strokeWidth="3"
+            transform={`rotate(${i * 72} 50 50)`}
+          />
+        ))}
+        <circle
+          cx="50"
+          cy="50"
+          r="13"
+          fill={tokenToCssVar('pop.offwhite')}
+          stroke={tokenToCssVar('pop.black')}
+          strokeWidth="3"
+        />
+      </Box>
+    );
+  }
+
   return (
     <Box
       as="svg"

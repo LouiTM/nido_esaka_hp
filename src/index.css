@@ -5,3 +5,20 @@
 html {
   scroll-padding-top: 72px;
 }
+
+/* ポップ＆ビビッド版の装飾SVG（雲・風船など）共通アニメーション */
+@keyframes nido-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(16px); }
+}
+
+@keyframes nido-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nido-anim {
+    animation: none !important;
+  }
+}
