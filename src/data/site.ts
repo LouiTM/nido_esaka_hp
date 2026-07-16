@@ -138,7 +138,7 @@ export const conceptPoints: ConceptPoint[] = [
 export const studioInfo = {
   instagramUrl: 'https://www.instagram.com/nido_esaka/',
   instagramHandle: '@nido_esaka',
-  lineUrl: 'https://lin.ee/mGYYpb',
+  lineUrl: 'https://l.instagram.com/?u=https%3A%2F%2Flin.ee%2FmGYYpbm%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnm-A6N3_YUxESpbvLTfPI0Y509zrU5qEmRbt5YGKBrAJzRBQxts4YbkDS7rM_aem_t1clPnQBB11WEn3v7AwEIA&e=AUA14P_ibPHcKiesyDKowjJzXpCeNJGXldeX_oaGQlN-YNeYdsuKCy0Up5eGv5L4EH24GYbpLLPvJleJTt8v2Y-G62e1IlNDHi_nRF4xAzLXtuEnphhLf5EQCl-FN7YqmGkDd75Db4QdH67H90fZmio',
   address: {
     ja: '大阪府吹田市南金田2丁目26-28',
     en: '2-26-28 Minamikaneda, Suita, Osaka',

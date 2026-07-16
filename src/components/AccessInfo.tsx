@@ -4,20 +4,38 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { strings } from '../i18n/strings';
 import { studioInfo } from '../data/site';
 import { SectionHeading } from './SectionHeading';
-import { WaveDivider } from './WaveDivider';
-import { MotionSimpleGrid, useReducedMotionSafe } from './motion';
+import { ScallopDivider } from './ScallopDivider';
+import { pressable } from '../theme/pop';
+import { MotionBox, MotionSimpleGrid, useReducedMotionSafe } from './motion';
+
+const mapBtnProps = pressable(5);
 
 interface InfoRowProps {
   label: string;
+  /** ラベルピルの淡色背景（Chakraトークン） */
+  labelBg: string;
+  /** ラベルピルの文字色（Chakraトークン） */
+  labelColor: string;
   children: React.ReactNode;
 }
 
-function InfoRow({ label, children }: InfoRowProps) {
+function InfoRow({ label, labelBg, labelColor, children }: InfoRowProps) {
   return (
-    <VStack align="flex-start" spacing={1.5}>
-      <Text fontSize="sm" fontWeight="700" color="mustard.600">
+    <VStack align="flex-start" spacing={2}>
+      <Box
+        display="inline-flex"
+        bg={labelBg}
+        border="2px solid"
+        borderColor="pop.black"
+        borderRadius="full"
+        px="14px"
+        py="3px"
+        fontSize="13px"
+        fontWeight="800"
+        color={labelColor}
+      >
         {label}
-      </Text>
+      </Box>
       {children}
     </VStack>
   );
@@ -29,9 +47,13 @@ export function AccessInfo() {
   const { fadeUpVariants } = useReducedMotionSafe();
 
   return (
-    <Box as="section" id="access" position="relative" overflow="hidden" pt={{ base: 14, md: 18 }} pb={{ base: 20, md: 24 }} bg="cream.100">
-      <Box maxW="7xl" mx="auto" px={{ base: 4, md: 8 }}>
-        <SectionHeading eyebrow="ACCESS" title={t.navAccess} align="center" mx="auto" mb={12} />
+    <Box as="section" id="access" position="relative" overflow="hidden" pt="80px" pb="110px" bg="pop.offwhite">
+      <Box maxW="1280px" mx="auto" px={{ base: 4, md: 8 }}>
+        <MotionBox initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeUpVariants}>
+          <VStack align="center" spacing={6} mb="56px">
+            <SectionHeading eyebrow="ACCESS" title={t.navAccess} kickerBg="pop.pink" tilt={2} underline="pop.pink" />
+          </VStack>
+        </MotionBox>
 
         <MotionSimpleGrid
           columns={{ base: 1, lg: 2 }}
@@ -42,29 +64,29 @@ export function AccessInfo() {
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUpVariants}
         >
-          <VStack align="stretch" spacing={7} maxW={{ lg: 'md' }} mx={{ base: 0, lg: 'auto' }} w="full">
-            <InfoRow label={t.addressTitle}>
-              <Text fontWeight="700" color="ink.900">
+          <VStack align="stretch" spacing="26px" maxW="460px" mx={{ base: 0, lg: 'auto' }} w="full">
+            <InfoRow label={t.addressTitle} labelBg="pop.yellowLight" labelColor="pop.yellowText">
+              <Text fontWeight="700" fontSize="16px" color="pop.black">
                 {studioInfo.address[lang]}
               </Text>
             </InfoRow>
 
-            <InfoRow label={t.accessTitle}>
+            <InfoRow label={t.accessTitle} labelBg="pop.blueLight" labelColor="pop.blueText">
               {studioInfo.access.map((line) => (
-                <Text key={line.ja} fontSize="sm" color="ink.700">
+                <Text key={line.ja} fontSize="14px" color="ink.700">
                   {line[lang]}
                 </Text>
               ))}
             </InfoRow>
 
-            <InfoRow label={t.genreTitle}>
-              <Text fontSize="sm" color="ink.700">
+            <InfoRow label={t.genreTitle} labelBg="pop.orangeLight" labelColor="pop.orangeText">
+              <Text fontSize="14px" color="ink.700" lineHeight="1.9">
                 {studioInfo.genreLabel[lang]}
               </Text>
             </InfoRow>
 
-            <InfoRow label={t.hoursTitle}>
-              <Text fontSize="sm" color="ink.700">
+            <InfoRow label={t.hoursTitle} labelBg="pop.pinkLight" labelColor="pop.pinkText">
+              <Text fontSize="14px" color="ink.700">
                 {t.hoursBody}
               </Text>
             </InfoRow>
@@ -74,14 +96,17 @@ export function AccessInfo() {
               href={studioInfo.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
+              {...mapBtnProps}
               alignSelf="flex-start"
-              size="lg"
-              px={8}
-              bg="mustard.500"
-              color="white"
-              leftIcon={<FiMapPin />}
-              _hover={{ bg: 'mustard.600', transform: 'translateY(-1px)' }}
-              transition="all 0.2s"
+              bg="pop.yellow"
+              color="pop.black"
+              h="52px"
+              px="30px"
+              fontSize="17px"
+              fontWeight="800"
+              leftIcon={<FiMapPin size={19} />}
+              iconSpacing="10px"
+              _hover={{ ...mapBtnProps._hover, bg: 'pop.yellow', color: 'pop.black' }}
             >
               {t.openInMaps}
             </Button>
@@ -89,10 +114,12 @@ export function AccessInfo() {
 
           <Box
             position="relative"
-            borderRadius="2xl"
+            borderRadius="32px"
             overflow="hidden"
-            bg="sage.300"
-            boxShadow="0 20px 40px -18px rgba(27,34,36,0.25)"
+            bg="pop.blueLight"
+            border="3px solid"
+            borderColor="pop.black"
+            boxShadow="10px 10px 0 var(--chakra-colors-pop-blue)"
           >
             <AspectRatio ratio={4 / 3}>
               <Box
@@ -107,7 +134,7 @@ export function AccessInfo() {
           </Box>
         </MotionSimpleGrid>
       </Box>
-      <WaveDivider fill="blush.100" />
+      <ScallopDivider fill="pop.pink" />
     </Box>
   );
 }
